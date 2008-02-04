@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __CWINDOWDATA_H__
+#define __CWINDOWDATA_H__
 
 #include "stdafx.h"
 #include "milcore.h"
@@ -17,3 +18,7 @@ public:
 	CWindowData();
 	~CWindowData();
 };
+
+#else
+class	CWindowData;
+#endif

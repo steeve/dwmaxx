@@ -1,10 +1,10 @@
-#pragma once
+#ifndef __CTOPLEVELWINDOW_H__
+#define __CTOPLEVELWINDOW_H__
 
 #include "stdafx.h"
 #include "milcore.h"
 #include "CVisual.h"
-
-class CWindowData;
+#include "CWindowData.h"
 
 class	CTopLevelWindow : public CVisual
 {
@@ -17,3 +17,7 @@ public: // 0xB8
 
 	long	ShowWindow(bool show);
 };
+
+#else
+class	CTopLevelWindow;
+#endif

@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 6.00.0366 */
-/* at Tue Jan 29 02:19:40 2008
+/* at Mon Feb 04 20:05:28 2008
  */
 /* Compiler settings for .\dwmaxx.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)

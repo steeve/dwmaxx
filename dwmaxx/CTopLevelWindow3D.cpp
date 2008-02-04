@@ -33,5 +33,5 @@ long CTopLevelWindow3D::OnZOrderUpdated(bool param1)
 
 long CTopLevelWindow3D::UpdateAnimatedResources()
 {
-	return ((long)UDWM_CallMethodEAX(this, rva_CTopLevelWindow3D_UpdateAnimatedResources);
+	return ((long)UDWM_CallMethodEAX(this, rva_CTopLevelWindow3D_UpdateAnimatedResources));
 }

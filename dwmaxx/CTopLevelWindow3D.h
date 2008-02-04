@@ -1,12 +1,12 @@
-#pragma once
+#ifndef __CTOPLEVELWINDOW3D_H__
+#define __CTOPLEVELWINDOW3D_H__
 
 #include "stdafx.h"
 #include "milcore.h"
 #include "CVisual.h"
 #include "ISecondaryWindowRepresentationChangedListener.h"
 #include "CSecondaryWindowRepresentation.h"
-
-class CWindowData;
+#include "CWindowData.h"
 
 class	CTopLevelWindow3D : public CVisual, public ISecondaryWindowRepresentationChangedListener
 {
@@ -28,3 +28,7 @@ public: // 0xB8
 
 	long OnZOrderUpdated(bool param1);
 };
+
+#else
+class	CTopLevelWindow3D;
+#endif
