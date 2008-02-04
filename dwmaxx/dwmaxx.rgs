@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'dwmaxx'
+		'dwmaxx.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

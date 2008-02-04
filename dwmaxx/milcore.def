@@ -1,0 +1,14 @@
+LIBRARY "milcore.dll"
+
+EXPORTS
+    MilChannel_AppendCommandData
+    MilChannel_BeginCommand
+    MilChannel_CommitChannel
+    MilChannel_EndCommand
+    MilChannel_SetNotificationWindow
+    MilConnection_CreateChannel
+    MilConnection_DestroyChannel
+    MilResource_CreateOrAddRefOnChannel
+    MilResource_DuplicateHandle
+    MilResource_ReleaseOnChannel
+    MilResource_SendCommand

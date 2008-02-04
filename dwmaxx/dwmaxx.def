@@ -1,0 +1,9 @@
+; dwmaxx.def : Declares the module parameters.
+
+LIBRARY      "dwmaxx.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

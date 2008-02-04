@@ -1,0 +1,27 @@
+HKCR
+{
+	dwmaxx.DWMInjector.1 = s 'DWMInjector Class'
+	{
+		CLSID = s '{0A6807C4-1DE7-45D9-B1B3-4B6219FC27F4}'
+	}
+	dwmaxx.DWMInjector = s 'DWMInjector Class'
+	{
+		CLSID = s '{0A6807C4-1DE7-45D9-B1B3-4B6219FC27F4}'
+		CurVer = s 'dwmaxx.DWMInjector.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0A6807C4-1DE7-45D9-B1B3-4B6219FC27F4} = s 'DWMInjector Class'
+		{
+			ProgID = s 'dwmaxx.DWMInjector.1'
+			VersionIndependentProgID = s 'dwmaxx.DWMInjector'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{C42006C4-4EAF-402F-89C6-09D167E75AEC}'
+		}
+	}
+}

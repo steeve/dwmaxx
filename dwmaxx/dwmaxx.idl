@@ -1,0 +1,69 @@
+// dwmaxx.idl : IDL source for dwmaxx
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (dwmaxx.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(9C797EE5-8465-4980-B028-4244CB7740B2),
+	dual,
+	nonextensible,
+	helpstring("IDWMEx Interface"),
+	pointer_default(unique)
+]
+interface IDWMEx : IDispatch{
+	[id(1), helpstring("method OpenConsole")] HRESULT OpenConsole(void);
+	[id(2), helpstring("method CloseConsole")] HRESULT CloseConsole(void);
+	[id(3), helpstring("method SetWindowScale")] HRESULT SetWindowScale(LONG hWnd, FLOAT ScaleX, FLOAT ScaleY);
+	[id(4), helpstring("method SetWindowOffset")] HRESULT SetWindowOffset(LONG hWnd, FLOAT X, FLOAT Y);
+	[id(5), helpstring("method ExecuteBatch")] HRESULT ExecuteBatch(LONG batchId);
+	[id(6), helpstring("method BatchSetWindowMatrix")] HRESULT BatchSetWindowMatrix(LONG hWnd, FLOAT X, FLOAT Y, FLOAT SX, FLOAT SY, FLOAT RZ);
+	[id(8), helpstring("method GetRenderOptions")] HRESULT GetRenderOptions(LONG hWnd, LONG* Options);
+	[id(9), helpstring("method SetRenderOptions")] HRESULT SetRenderOptions(LONG hWnd, LONG Options);
+	[id(10), helpstring("method SetWindowMatrix")] HRESULT SetWindowMatrix(LONG hWnd, FLOAT X, FLOAT Y, FLOAT SX, FLOAT SY, FLOAT RZ);
+	[id(11), helpstring("method LockRendering")] HRESULT LockRendering(void);
+	[id(12), helpstring("method UnlockRendering")] HRESULT UnlockRendering(void);
+};
+[
+	object,
+	uuid(CB3A50A3-0FF3-4582-96CF-F2EF08F6DBDA),
+	dual,
+	nonextensible,
+	helpstring("IDWMInjector Interface"),
+	pointer_default(unique)
+]
+interface IDWMInjector : IDispatch{
+	[id(2), helpstring("method Inject")] HRESULT Inject(void);
+	[id(3), helpstring("method GetDWMExObject")] HRESULT GetDWMExObject([out] IDWMEx** dwmExOut);
+	[propget, id(4), helpstring("property IsInjected")] HRESULT IsInjected([out, retval] VARIANT_BOOL* pVal);
+	[id(5), helpstring("method Unload")] HRESULT Unload(void);
+};
+[
+	uuid(C42006C4-4EAF-402F-89C6-09D167E75AEC),
+	version(0.1),
+	helpstring("dwmaxx 0.1")
+]
+library dwmaxxLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(3B83AC72-FD69-456A-AF52-D09FA158BFFD),
+		helpstring("DWMEx Class")
+	]
+	coclass DWMEx
+	{
+		[default] interface IDWMEx;
+	};
+	[
+		uuid(0A6807C4-1DE7-45D9-B1B3-4B6219FC27F4),
+		helpstring("DWMInjector Class")
+	]
+	coclass DWMInjector
+	{
+		[default] interface IDWMInjector;
+	};
+};
