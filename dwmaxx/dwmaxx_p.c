@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 6.00.0366 */
-/* at Mon Feb 04 20:05:28 2008
+/* at Sun Feb 17 18:58:45 2008
  */
 /* Compiler settings for .\dwmaxx.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
@@ -46,7 +46,7 @@
 #include "dwmaxx.h"
 
 #define TYPE_FORMAT_STRING_SIZE   33                                
-#define PROC_FORMAT_STRING_SIZE   459                               
+#define PROC_FORMAT_STRING_SIZE   487                               
 #define TRANSMIT_AS_TABLE_SIZE    0            
 #define WIRE_MARSHAL_TABLE_SIZE   0            
 
@@ -479,23 +479,24 @@ static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
 /* 378 */	0x8,		/* FC_LONG */
 			0x0,		/* 0 */
 
-	/* Procedure GetDWMExObject */
+	/* Procedure Test */
 
 /* 380 */	0x33,		/* FC_AUTO_HANDLE */
 			0x6c,		/* Old Flags:  object, Oi2 */
 /* 382 */	NdrFcLong( 0x0 ),	/* 0 */
-/* 386 */	NdrFcShort( 0x8 ),	/* 8 */
+/* 386 */	NdrFcShort( 0x12 ),	/* 18 */
 /* 388 */	NdrFcShort( 0xc ),	/* x86 Stack size/offset = 12 */
-/* 390 */	NdrFcShort( 0x0 ),	/* 0 */
+/* 390 */	NdrFcShort( 0x8 ),	/* 8 */
 /* 392 */	NdrFcShort( 0x8 ),	/* 8 */
-/* 394 */	0x5,		/* Oi2 Flags:  srv must size, has return, */
+/* 394 */	0x4,		/* Oi2 Flags:  has return, */
 			0x2,		/* 2 */
 
-	/* Parameter dwmExOut */
+	/* Parameter hWnd */
 
-/* 396 */	NdrFcShort( 0x13 ),	/* Flags:  must size, must free, out, */
+/* 396 */	NdrFcShort( 0x48 ),	/* Flags:  in, base type, */
 /* 398 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
-/* 400 */	NdrFcShort( 0x6 ),	/* Type Offset=6 */
+/* 400 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
 
 	/* Return value */
 
@@ -504,24 +505,23 @@ static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
 /* 406 */	0x8,		/* FC_LONG */
 			0x0,		/* 0 */
 
-	/* Procedure get_IsInjected */
+	/* Procedure GetDWMExObject */
 
 /* 408 */	0x33,		/* FC_AUTO_HANDLE */
 			0x6c,		/* Old Flags:  object, Oi2 */
 /* 410 */	NdrFcLong( 0x0 ),	/* 0 */
-/* 414 */	NdrFcShort( 0x9 ),	/* 9 */
+/* 414 */	NdrFcShort( 0x8 ),	/* 8 */
 /* 416 */	NdrFcShort( 0xc ),	/* x86 Stack size/offset = 12 */
 /* 418 */	NdrFcShort( 0x0 ),	/* 0 */
-/* 420 */	NdrFcShort( 0x22 ),	/* 34 */
-/* 422 */	0x4,		/* Oi2 Flags:  has return, */
+/* 420 */	NdrFcShort( 0x8 ),	/* 8 */
+/* 422 */	0x5,		/* Oi2 Flags:  srv must size, has return, */
 			0x2,		/* 2 */
 
-	/* Parameter pVal */
+	/* Parameter dwmExOut */
 
-/* 424 */	NdrFcShort( 0x2150 ),	/* Flags:  out, base type, simple ref, srv alloc size=8 */
+/* 424 */	NdrFcShort( 0x13 ),	/* Flags:  must size, must free, out, */
 /* 426 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
-/* 428 */	0x6,		/* FC_SHORT */
-			0x0,		/* 0 */
+/* 428 */	NdrFcShort( 0x6 ),	/* Type Offset=6 */
 
 	/* Return value */
 
@@ -530,23 +530,49 @@ static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
 /* 434 */	0x8,		/* FC_LONG */
 			0x0,		/* 0 */
 
-	/* Procedure Unload */
+	/* Procedure get_IsInjected */
 
 /* 436 */	0x33,		/* FC_AUTO_HANDLE */
 			0x6c,		/* Old Flags:  object, Oi2 */
 /* 438 */	NdrFcLong( 0x0 ),	/* 0 */
-/* 442 */	NdrFcShort( 0xa ),	/* 10 */
-/* 444 */	NdrFcShort( 0x8 ),	/* x86 Stack size/offset = 8 */
+/* 442 */	NdrFcShort( 0x9 ),	/* 9 */
+/* 444 */	NdrFcShort( 0xc ),	/* x86 Stack size/offset = 12 */
 /* 446 */	NdrFcShort( 0x0 ),	/* 0 */
-/* 448 */	NdrFcShort( 0x8 ),	/* 8 */
+/* 448 */	NdrFcShort( 0x22 ),	/* 34 */
 /* 450 */	0x4,		/* Oi2 Flags:  has return, */
+			0x2,		/* 2 */
+
+	/* Parameter pVal */
+
+/* 452 */	NdrFcShort( 0x2150 ),	/* Flags:  out, base type, simple ref, srv alloc size=8 */
+/* 454 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
+/* 456 */	0x6,		/* FC_SHORT */
+			0x0,		/* 0 */
+
+	/* Return value */
+
+/* 458 */	NdrFcShort( 0x70 ),	/* Flags:  out, return, base type, */
+/* 460 */	NdrFcShort( 0x8 ),	/* x86 Stack size/offset = 8 */
+/* 462 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
+	/* Procedure Unload */
+
+/* 464 */	0x33,		/* FC_AUTO_HANDLE */
+			0x6c,		/* Old Flags:  object, Oi2 */
+/* 466 */	NdrFcLong( 0x0 ),	/* 0 */
+/* 470 */	NdrFcShort( 0xa ),	/* 10 */
+/* 472 */	NdrFcShort( 0x8 ),	/* x86 Stack size/offset = 8 */
+/* 474 */	NdrFcShort( 0x0 ),	/* 0 */
+/* 476 */	NdrFcShort( 0x8 ),	/* 8 */
+/* 478 */	0x4,		/* Oi2 Flags:  has return, */
 			0x1,		/* 1 */
 
 	/* Return value */
 
-/* 452 */	NdrFcShort( 0x70 ),	/* Flags:  out, return, base type, */
-/* 454 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
-/* 456 */	0x8,		/* FC_LONG */
+/* 480 */	NdrFcShort( 0x70 ),	/* Flags:  out, return, base type, */
+/* 482 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
+/* 484 */	0x8,		/* FC_LONG */
 			0x0,		/* 0 */
 
 			0x0
@@ -617,7 +643,8 @@ static const unsigned short IDWMEx_FormatStringOffsetTable[] =
     244,
     278,
     336,
-    358
+    358,
+    380
     };
 
 static const MIDL_STUBLESS_PROXY_INFO IDWMEx_ProxyInfo =
@@ -641,7 +668,7 @@ static const MIDL_SERVER_INFO IDWMEx_ServerInfo =
     0,
     0,
     0};
-CINTERFACE_PROXY_VTABLE(18) _IDWMExProxyVtbl = 
+CINTERFACE_PROXY_VTABLE(19) _IDWMExProxyVtbl = 
 {
     &IDWMEx_ProxyInfo,
     &IID_IDWMEx,
@@ -662,7 +689,8 @@ CINTERFACE_PROXY_VTABLE(18) _IDWMExProxyVtbl =
     (void *) (INT_PTR) -1 /* IDWMEx::SetRenderOptions */ ,
     (void *) (INT_PTR) -1 /* IDWMEx::SetWindowMatrix */ ,
     (void *) (INT_PTR) -1 /* IDWMEx::LockRendering */ ,
-    (void *) (INT_PTR) -1 /* IDWMEx::UnlockRendering */
+    (void *) (INT_PTR) -1 /* IDWMEx::UnlockRendering */ ,
+    (void *) (INT_PTR) -1 /* IDWMEx::Test */
 };
 
 
@@ -682,6 +710,7 @@ static const PRPC_STUB_FUNCTION IDWMEx_table[] =
     NdrStubCall2,
     NdrStubCall2,
     NdrStubCall2,
+    NdrStubCall2,
     NdrStubCall2
 };
 
@@ -689,7 +718,7 @@ CInterfaceStubVtbl _IDWMExStubVtbl =
 {
     &IID_IDWMEx,
     &IDWMEx_ServerInfo,
-    18,
+    19,
     &IDWMEx_table[-3],
     CStdStubBuffer_DELEGATING_METHODS
 };
@@ -706,9 +735,9 @@ static const unsigned short IDWMInjector_FormatStringOffsetTable[] =
     (unsigned short) -1,
     (unsigned short) -1,
     0,
-    380,
     408,
-    436
+    436,
+    464
     };
 
 static const MIDL_STUBLESS_PROXY_INFO IDWMInjector_ProxyInfo =

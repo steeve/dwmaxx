@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 6.00.0366 */
-/* at Mon Feb 04 20:05:28 2008
+/* at Sun Feb 17 18:58:45 2008
  */
 /* Compiler settings for .\dwmaxx.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
@@ -152,6 +152,9 @@ EXTERN_C const IID IID_IDWMEx;
         
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE UnlockRendering( void) = 0;
         
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE Test( 
+            /* [in] */ LONG hWnd) = 0;
+        
     };
     
 #else 	/* C style interface */
@@ -256,6 +259,10 @@ EXTERN_C const IID IID_IDWMEx;
         /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *UnlockRendering )( 
             IDWMEx * This);
         
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *Test )( 
+            IDWMEx * This,
+            /* [in] */ LONG hWnd);
+        
         END_INTERFACE
     } IDWMExVtbl;
 
@@ -324,6 +331,9 @@ EXTERN_C const IID IID_IDWMEx;
 
 #define IDWMEx_UnlockRendering(This)	\
     (This)->lpVtbl -> UnlockRendering(This)
+
+#define IDWMEx_Test(This,hWnd)	\
+    (This)->lpVtbl -> Test(This,hWnd)
 
 #endif /* COBJMACROS */
 
@@ -470,6 +480,18 @@ void __RPC_STUB IDWMEx_LockRendering_Stub(
 
 
 void __RPC_STUB IDWMEx_UnlockRendering_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id] */ HRESULT STDMETHODCALLTYPE IDWMEx_Test_Proxy( 
+    IDWMEx * This,
+    /* [in] */ LONG hWnd);
+
+
+void __RPC_STUB IDWMEx_Test_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,

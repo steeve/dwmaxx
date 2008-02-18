@@ -27,6 +27,7 @@ interface IDWMEx : IDispatch{
 	[id(10), helpstring("method SetWindowMatrix")] HRESULT SetWindowMatrix(LONG hWnd, FLOAT X, FLOAT Y, FLOAT SX, FLOAT SY, FLOAT RZ);
 	[id(11), helpstring("method LockRendering")] HRESULT LockRendering(void);
 	[id(12), helpstring("method UnlockRendering")] HRESULT UnlockRendering(void);
+	[id(13), helpstring("method Test")] HRESULT Test([in] LONG hWnd);
 };
 [
 	object,

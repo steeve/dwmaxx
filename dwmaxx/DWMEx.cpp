@@ -54,10 +54,11 @@ STDMETHODIMP CDWMEx::SetWindowOffset(LONG hWnd, FLOAT X, FLOAT Y)
 	CWindowData	*pWindowData = LookupWindow((HWND)hWnd);
 	if (pWindowData != NULL)
 	{
-		//CVisual_SetOffsetFloat((CVisual *)pWindowData->TopLevelWindow, X, Y);
-		//CVisual_SetDirtyFlags((CVisual *)pWindowData->TopLevelWindow, 0x10);
-		//CVisual_UpdateTransform((CVisual *)pWindowData->TopLevelWindow);
-		//CVisual_SetTransform((CVisual *)pWindowData->TopLevelWindow, X, Y, 1.0f, 1.0f);
+		CTopLevelWindow *window = pWindowData->TopLevelWindow;
+
+		window->AddRef();
+		window->MILSetOffset((double)X, (double)Y);
+		window->Relase();
 	}
 
 	LeaveCriticalSection(GetDWMCriticalSection());
@@ -107,6 +108,64 @@ STDMETHODIMP CDWMEx::GetRenderOptions(LONG hWnd, LONG* Options)
 }
 
 STDMETHODIMP CDWMEx::SetRenderOptions(LONG hWnd, LONG Options)
+{
+	TCHAR	buf[512];
+	EnterCriticalSection(GetDWMCriticalSection());
+
+	CWindowData	*pWindowData = LookupWindow((HWND)hWnd);
+	if (pWindowData != NULL)
+	{
+		CTopLevelWindow *window = pWindowData->TopLevelWindow;
+
+		window->AddRef();
+		window->RenderFlags = Options;
+		window->UpdateRenderOptions();
+		window->Relase();
+	}
+
+	LeaveCriticalSection(GetDWMCriticalSection());
+
+	return S_OK;
+}
+
+STDMETHODIMP CDWMEx::SetWindowMatrix(LONG hWnd, FLOAT X, FLOAT Y, FLOAT SX, FLOAT SY, FLOAT RZ)
+{
+	EnterCriticalSection(GetDWMCriticalSection());
+
+	CWindowData	*pWindowData = LookupWindow((HWND)hWnd);
+	if (pWindowData != NULL)
+	{
+		CTopLevelWindow *window = pWindowData->TopLevelWindow;
+		window->AddRef();
+		window->MILSetTransform(X, Y, SX, SY, RZ);
+		window->Relase();
+	}
+	else
+	{
+		LeaveCriticalSection(GetDWMCriticalSection());
+		return (E_FAIL);
+	}
+
+	LeaveCriticalSection(GetDWMCriticalSection());
+
+	return S_OK;
+}
+
+STDMETHODIMP CDWMEx::LockRendering(void)
+{
+	EnterCriticalSection(GetDWMCriticalSection());
+
+	return S_OK;
+}
+
+STDMETHODIMP CDWMEx::UnlockRendering(void)
+{
+	LeaveCriticalSection(GetDWMCriticalSection());
+
+	return S_OK;
+}
+
+STDMETHODIMP CDWMEx::Test(LONG hWnd)
 {
 	TCHAR	buf[512];
 	EnterCriticalSection(GetDWMCriticalSection());
@@ -187,43 +246,6 @@ STDMETHODIMP CDWMEx::SetRenderOptions(LONG hWnd, LONG Options)
 		window->Relase();
 	}
 
-	LeaveCriticalSection(GetDWMCriticalSection());
-
-	return S_OK;
-}
-
-STDMETHODIMP CDWMEx::SetWindowMatrix(LONG hWnd, FLOAT X, FLOAT Y, FLOAT SX, FLOAT SY, FLOAT RZ)
-{
-	EnterCriticalSection(GetDWMCriticalSection());
-
-	CWindowData	*pWindowData = LookupWindow((HWND)hWnd);
-	if (pWindowData != NULL)
-	{
-		CTopLevelWindow *window = pWindowData->TopLevelWindow;
-		window->AddRef();
-		window->MILSetTransform(X, Y, SX, SY, RZ);
-		window->Relase();
-	}
-	else
-	{
-		LeaveCriticalSection(GetDWMCriticalSection());
-		return (E_FAIL);
-	}
-
-	LeaveCriticalSection(GetDWMCriticalSection());
-
-	return S_OK;
-}
-
-STDMETHODIMP CDWMEx::LockRendering(void)
-{
-	EnterCriticalSection(GetDWMCriticalSection());
-
-	return S_OK;
-}
-
-STDMETHODIMP CDWMEx::UnlockRendering(void)
-{
 	LeaveCriticalSection(GetDWMCriticalSection());
 
 	return S_OK;

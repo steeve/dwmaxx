@@ -52,7 +52,8 @@ int		main(int argc, char **argv)
 	injector->GetDWMExObject(&dwmObject);
 
 	dwmObject->OpenConsole();
-	dwmObject->SetWindowScale((LONG)hNotepad, 0.5f, 0.5f);
+	dwmObject->Test((LONG)hNotepad);
+	
 
 	//DWM_PRESENT_PARAMETERS params;
 	//params.cbSize = sizeof(params);

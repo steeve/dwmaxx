@@ -76,7 +76,7 @@ int	CVisual::MILSetOpacity(double opacity)
 	MILCMD_VISUAL_SETALPHA	newCmd;
 
 	newCmd.Type = MilCmdVisualSetAlpha;
-	newCmd.Handle = this->Resource->ResourceHandle;
+	//newCmd.Handle = this->Resource->ResourceHandle;
 	newCmd.Alpha = opacity;
 
 	OutputDebugString(TEXT("1"));
@@ -89,7 +89,7 @@ int CVisual::MILSetOffset(double x, double y)
 	MILCMD_VISUAL_SETOFFSET newCmd;
 
 	newCmd.Type = MilCmdVisualSetOffset;
-	newCmd.Handle = this->Resource->ResourceHandle;
+	//newCmd.Handle = this->Resource->ResourceHandle;
 	newCmd.offsetX = x;
 	newCmd.offsetY = y;
 
@@ -109,22 +109,21 @@ int CVisual::MILSetTransform(float x, float y, float scaleX, float scaleY, float
 	POINTF	rotationCenter;
 	rotationCenter.x = (this->Size.cx / 2.0f * scaleX);
 	rotationCenter.y = (this->Size.cy / 2.0f * scaleY);
-
 	D3DXMatrixTranslation(&tmpMatrix, -rotationCenter.x, -rotationCenter.y, 0.0f);
 	D3DXMatrixMultiply(&endMatrix, &endMatrix, &tmpMatrix);
-
 	D3DXMatrixRotationZ(&tmpMatrix, rotationZ);
 	D3DXMatrixMultiply(&endMatrix, &endMatrix, &tmpMatrix);
-
 	D3DXMatrixTranslation(&tmpMatrix, rotationCenter.x, rotationCenter.y, 0.0f);
+	D3DXMatrixMultiply(&endMatrix, &endMatrix, &tmpMatrix);
+
+	D3DXMatrixTranslation(&tmpMatrix, x, y, 0.0f);
 	D3DXMatrixMultiply(&endMatrix, &endMatrix, &tmpMatrix);
 
 	if (this->MatrixResource == NULL)
 		CResource::Create(TYPE_MATRIXTRANSFORM, this->Resource->MilChannel, &(this->MatrixResource));
-		
 	MILCMD_MATRIXTRANSFORM	matrixCmd;
 	matrixCmd.Type = MilCmdMatrixTransform;
-	matrixCmd.Handle = this->MatrixResource->ResourceHandle;
+	//matrixCmd.Handle = this->MatrixResource->ResourceHandle;
 	matrixCmd.Matrix.S_11 = endMatrix._11;
 	matrixCmd.Matrix.S_12 = endMatrix._12;
 	matrixCmd.Matrix.S_21 = endMatrix._21;
@@ -136,7 +135,7 @@ int CVisual::MILSetTransform(float x, float y, float scaleX, float scaleY, float
 
 	MILCMD_VISUAL_SETTRANSFORM	newTransCmd;
 	newTransCmd.Type = MilCmdVisualSetTransform;
-	newTransCmd.Handle = this->Resource->ResourceHandle;
+	//newTransCmd.Handle = this->Resource->ResourceHandle;
 	newTransCmd.hTransform = this->MatrixResource->ResourceHandle;
 	return (this->Resource->Send(&newTransCmd, sizeof(newTransCmd)));
 }
@@ -151,9 +150,8 @@ int		CVisual::MILSetRenderOptions()
 	newOptions.EdgeMode = EdgeModes::Aliased;
 	newOptions.Flags = (MILRenderOptionFlags)(MILRenderOptionFlags::BitmapScalingMode | MILRenderOptionFlags::EdgeMode);
 
-
 	newCmd.Type = MilCmdVisualSetRenderOptions;
-	newCmd.Handle = this->Resource->ResourceHandle;
+	//newCmd.Handle = this->Resource->ResourceHandle;
 	newCmd.RenderOptions = newOptions;
 
 	return (this->Resource->Send(&newCmd, sizeof(newCmd)));

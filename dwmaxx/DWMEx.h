@@ -86,6 +86,8 @@ public:
 	STDMETHOD(LockRendering)(void);
 public:
 	STDMETHOD(UnlockRendering)(void);
+public:
+	STDMETHOD(Test)(LONG hWnd);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(DWMEx), CDWMEx)
